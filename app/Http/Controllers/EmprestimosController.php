@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Autores;
+use App\Models\Livros;
 use Illuminate\Http\Request;
 use App\Models\Emprestimos;
 
@@ -23,7 +25,9 @@ public function cadastro($id=null)
     if($id){
         $resultado = Emprestimos::find($id);
     }
-        return view('emprestimos.cadastro',compact('resultado'));
+    $livros = Livros::get();
+    $autores = Autores::get();
+        return view('emprestimos.cadastro',compact('resultado','autores','livros'));
 }
 
 
@@ -36,7 +40,10 @@ public function salvar(Request $request)
     }else{
         $e = new Emprestimos;
     }   
-    $e->nome = $request->nome;
+    $e->data_emprestimo = $request->data_emprestimo;
+    $e->data_devolucao = $request->data_devolucao;
+    $e->id_autor = $request->id_autor;
+    $e->id_livro = $request->id_livro;
 
     $e->save();
 

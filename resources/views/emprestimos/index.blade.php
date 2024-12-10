@@ -1,17 +1,17 @@
 <h1>Emprestimos</h1>
 <table>
 <tr>
-<th>Nome</th>
-<th>Email</th>
+<th>Data Emprestimo </th>
+<th>Data Devolucao</th>
 <th>Editar</th>
 <th>Remover</th>
 </tr>
-@foreach($usuarios as $usuario)
+@foreach($emprestimos as $emprestimo)
 <tr>
 <td>{{ $usuario->nome }}</td>
 <td>{{ $usuario->email }}</td>
-<td><a href='/usuarios/cadastro/{{ $usuario->id }}'>Editar</a></td>
-<td><a href='/usuarios/remover/{{ $usuario->id }}'>Remover</a></td>
+<td><a href='/emprestimos/cadastro/{{ $emprestimos->id }}'>Editar</a></td>
+<td><a href='/emprestimos/remover/{{ $emprestimos->id }}'>Remover</a></td>
 </tr>
 @endforeach
 </table>
